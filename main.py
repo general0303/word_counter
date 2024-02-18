@@ -8,7 +8,7 @@ remove_punct_dict = dict((ord(p), None) for p in string.punctuation)
 morph = MorphAnalyzer()
 counter = {"ADJF": 0, "ADJS": 0, "VERB": 0, "INFN": 0, "ADVB": 0}
 
-with codecs.open("text.txt", "r", "utf_8_sig") as f:
+with codecs.open(input("Введите имя файла\n"), "r", "utf_8_sig") as f:
     text = f.read()
 word_tokens = nltk.word_tokenize(text.translate(remove_punct_dict))
 for word in word_tokens:
