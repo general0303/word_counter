@@ -15,4 +15,7 @@ for word in word_tokens:
     part_of_speech = morph.parse(word)[0].tag.POS
     if part_of_speech in counter:
         counter[part_of_speech] += 1
-print(counter)
+print(f"В тексте представлено:\n"
+      f"{counter['ADVB']} наречий,\n"
+      f"{counter['VERB'] + counter['INFN']} глаголов,\n"
+      f"{counter['ADJF'] + counter['ADJS']} прилагательных")
