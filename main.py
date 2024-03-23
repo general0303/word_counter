@@ -7,8 +7,13 @@ from pymorphy2 import MorphAnalyzer
 def count(filename):
     nltk.download('punkt')
     remove_punct_dict = dict((ord(p), None) for p in string.punctuation)
+
     morph = MorphAnalyzer()
-    counter = {"ADJF": 0, "ADJS": 0, "VERB": 0, "INFN": 0, "ADVB": 0}
+    counter = {"ADJF": 0,
+               "ADJS": 0,
+               "VERB": 0,
+               "INFN": 0,
+               "ADVB": 0}
     try:
         with codecs.open(filename, "r", "utf_8_sig") as f:
             for text in f:
