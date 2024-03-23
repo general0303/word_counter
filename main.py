@@ -13,7 +13,6 @@ def count(filename):
         with codecs.open(filename, "r", "utf_8_sig") as f:
             for text in f:
                 word_tokens = nltk.word_tokenize(text.translate(remove_punct_dict))
-                print(word_tokens)
                 for word in word_tokens:
                     part_of_speech = morph.parse(word)[0].tag.POS
                     if part_of_speech in counter:
