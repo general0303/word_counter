@@ -20,7 +20,8 @@ def count(filename):
                 word_tokens = nltk.word_tokenize(text.translate(remove_punct_dict))
                 for word in word_tokens:
                     part_of_speech = morph.parse(word)[0].tag.POS
-                    counter[part_of_speech] += 1 if part_of_speech in counter else 0
+                    if part_of_speech in counter:
+                        counter[part_of_speech] += 1
     except FileNotFoundError:
         pass
     return {'ADVB': counter['ADVB'], 'VERB': counter['VERB'] + counter['INFN'],

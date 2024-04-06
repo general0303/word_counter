@@ -32,21 +32,17 @@ jobs:
     - name: Test with pytest
       run: |
         coverage run -m pytest
+    - name: Coveralls
+      uses: coverallsapp/github-action@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
     - name: Save report
       run: |
         coverage html
     - name: Check coverage
       run: |
         coverage report --fail-under=80
-
-  coverrals:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Coveralls
-        uses: coverallsapp/github-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
 
   sonarcloud:
     runs-on: ubuntu-latest
