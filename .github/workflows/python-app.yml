@@ -31,7 +31,13 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest test.py
+        coverage run -m pytest
+    - name: Save report
+      run: |
+        coverage html
+    - name: Check coverage
+      run: |
+        coverage report --fail-under=80
 
   sonarcloud:
     runs-on: ubuntu-latest
